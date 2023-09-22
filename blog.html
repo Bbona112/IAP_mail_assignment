@@ -1,0 +1,56 @@
+
+                <!DOCTYPE html>
+                <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta http-equiv="X-Au-compatible" content="IE=edge">
+                        <meta name="viewport"content="width=device-width, initial-scale=1.0">
+                
+                            <title>
+                                Blog
+                            </title> 
+                        
+                        <link rel="stylesheet" href="CSS\blog.css">
+                    
+                        <link rel="preconnect" href="https://fonts.googleapis.com">
+                        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+                        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>  
+                    
+                    </head>
+                    <body>
+                        <header class="header">
+                            <a href="#" class="logo">TM</a>
+                
+                            <a href="#" class="logo">Article Registration</a>
+                        
+                            <nav class="navbar">
+                                <a href="index.html">Home</a>
+                                <a href="contact.html">Contact</a>
+                                <a href="signin.html">Sign-in</a>
+                                <a href="signup.html">Register Author</a>
+                                <a href="signoutproc.php">sign-out</a>
+                                
+                            </nav>
+                        </header>
+                        <div class="form-container">
+                            
+                            <form action="blogproc.php" method="POST">
+                                <label for="full_name">Author's Full Name:</label>
+                                <input type="text" id="full_name" name="full_name" required><br>
+                    
+                                <label for="article_title">Article Title:</label>
+                                <input type="text" id="article_title" name="article_title" required><br>
+                    
+                                <label for="article_text">Article Full Text:</label>
+                                <textarea id="article_text" name="article_text" required></textarea><br>
+                    
+                                <label for="publication_date">Publication Date:</label>
+                                <input type="date" id="publication_date" name="publication_date" required><br>
+                    
+                                <input type="submit" value="Submit">
+                            </form>
+                    </body>
+                </html>
+                        
+
