@@ -43,8 +43,8 @@ class SendMail
         }else{
             print_r($details);
             die("Error: Missing elements");
-             
         }
+    
     }
 }
 
