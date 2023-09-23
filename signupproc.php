@@ -1,25 +1,32 @@
 <?php
-require_once 'configs/dbconn.php';
+require_once "myDatabase.php";
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $author_fullname = $_POST['author_fullname'];
-    $author_email = $_POST['author_email'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $insert_query = "INSERT INTO authors (author_fullname, author_email_address, username, password)
-                     VALUES (?, ?, ?, ?)";
+if(isset($_POST["submit-btn"])){
+    $username = $_POST["userName"];
+    $email = $_POST["userEmail"];
+    $password = $_POST["userPassword"];
+    $confirmPass = $_POST["confirmPass"];
+    /*$role = $_POST["role"];*/
 
-    $statement = $db_connect->prepare($insert_query);
-    $statement->bind_param("ssss", $author_fullname, $author_email, $username, $password);
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        print "Invalid email address";
+    };
 
-    if ($statement->execute()) {
-        echo "Registration successful!";
-    } else {
-        echo "Error registering user: " . $statement->error;
+    if(strcmp($password,$confirmPass)!==0){
+        print "Passwords not matching";
     }
-    $statement->close();
+
+    $hashedPass = password_hash($password, PASSWORD_DEFAULT);
+
+    $insert_data = "INSERT INTO userdetails(userName,userEmail,userPassword)VALUES('$username', '$email','$password')";
+
+    if($conn->query($insert_data)===TRUE){
+        header("Location: ../signin.php");
+        exit();
+    }
+    else{
+        echo $conn -> error;
+    }
 }
-header("Location: signin.html");
-exit();
 ?>
